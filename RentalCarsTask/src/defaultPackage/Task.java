@@ -1,7 +1,18 @@
 package defaultPackage;
+import java.io.BufferedReader;
+import java.io.Console;
+import java.io.DataOutputStream;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.io.PrintStream;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLConnection;
+import java.nio.charset.StandardCharsets;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -17,6 +28,10 @@ import org.json.simple.parser.JSONParser;
 public class Task {
 	public static void main(String[] args) {
 		
+		String paramKey = "vehicle=";
+		String value = "";
+		String apiLink = "http://localhost/restAPI.php";
+		
 		// Read in JSON File
 		ArrayList<Vehicle> vehicleArray = parseJSONToArray("vehicles.json");
 		
@@ -28,7 +43,9 @@ public class Task {
 		});
 		
 		for(int i = 0; i < vehicleArray.size(); i++){
-			System.out.println(vehicleArray.get(i).returnName() + " - " + vehicleArray.get(i).returnPrice());
+			value = vehicleArray.get(i).returnName() + " - " + vehicleArray.get(i).returnPrice();
+			System.out.println(value);
+			sendToRESTAPI(paramKey+value,apiLink);
 			}
 		
 		// Task 2
@@ -60,8 +77,36 @@ public class Task {
 			System.out.println(vehicleArray.get(i).returnName() + " - " + vehicleArray.get(i).returnVehicleScore() + " - " + vehicleArray.get(i).returnRating() + " - " + vehicleArray.get(i).returnSumOfScores());
 			}
 		
-}
+	}
 	
+	private static void sendToRESTAPI(String s, String link){
+		try {
+			String urlParameters = s;
+			URL url = new URL(link);
+			URLConnection conn = url.openConnection();
+
+			conn.setDoOutput(true);
+
+			OutputStreamWriter writer = new OutputStreamWriter(conn.getOutputStream());
+
+			writer.write(urlParameters);
+			writer.flush();
+
+			String line;
+			BufferedReader reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+
+			while ((line = reader.readLine()) != null) {
+			    System.out.println(line);
+			}
+			writer.close();
+			reader.close();         
+		}
+		catch (MalformedURLException e) {
+	        e.printStackTrace();
+	    } catch (IOException e) {
+	        e.printStackTrace();
+	    }
+	}
 	
 	
 	private static ArrayList<Vehicle> parseJSONToArray(String path){
