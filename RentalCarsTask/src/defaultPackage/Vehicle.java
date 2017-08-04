@@ -1,5 +1,7 @@
 package defaultPackage;
 
+import java.util.Map;
+
 public class Vehicle {
 	String sipp;
 	String name;
@@ -39,6 +41,7 @@ public class Vehicle {
 		return rating;
 	}
 	
+	
 	public String returnCarType(){
 		String value = "";
 		
@@ -61,7 +64,6 @@ public class Vehicle {
 		} else if (sipp.charAt(0) == 'X') {
 			value = "Special";
 		}
-		
 		return value;
 	}
 	
@@ -85,7 +87,6 @@ public class Vehicle {
 		} else if (sipp.charAt(1) == 'V') {
 			value = "Passenger Van";
 		}
-	
 		return value;
 	}
 	
@@ -101,15 +102,25 @@ public class Vehicle {
 		return value;
 	}
 	
-	public String returnFuelAirCon(){
+	public String returnFuel(){ // This is here only for for future expansion
 		String value = "";
 		
 		if(sipp.charAt(3) == 'N'){
-			value = "Petrol - No Air Conditioning";
+			value = "Petrol";
 		} else {
-			value = "Petrol - Air Conditioning";
+			value = "Petrol";
 		}
+		return value; 
+	}
+	
+	public String returnAirCon(){
+		String value = "";
 		
+		if(sipp.charAt(3) == 'N'){
+			value = "No Air Conditioning";
+		} else {
+			value = "Air Conditioning";
+		}
 		return value; 
 	}
 	
@@ -122,12 +133,11 @@ public class Vehicle {
 			score += 5;
 		}
 		
-		if(this.returnFuelAirCon() == "Petrol - Air Conditioning"){
+		if(this.returnAirCon() == "Air Conditioning"){
 			score += 2;
 		}
 		vehicleScore = score;
-		sumOfScores = score + rating;
-		
+		sumOfScores = score + rating;	
 	}
 	
 	public double returnVehicleScore(){

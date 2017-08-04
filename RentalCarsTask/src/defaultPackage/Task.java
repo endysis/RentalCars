@@ -18,7 +18,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Map;
 import java.util.Random;
 
 import org.json.simple.JSONArray;
@@ -31,9 +33,13 @@ public class Task {
 		String paramKey = "vehicle=";
 		String value = "";
 		String apiLink = "http://localhost/restAPI.php";
+		String apiLink2 = "http://localhost/rentalOutput/php/restAPI.php";
 		
 		// Read in JSON File
 		ArrayList<Vehicle> vehicleArray = parseJSONToArray("vehicles.json");
+		
+		// Map Arrays
+		Map<String,String> carType = new HashMap<String,String>();
 		
 		// Task 1
 		Collections.sort(vehicleArray, new Comparator<Vehicle>(){
@@ -45,12 +51,12 @@ public class Task {
 		for(int i = 0; i < vehicleArray.size(); i++){
 			value = vehicleArray.get(i).returnName() + " - " + vehicleArray.get(i).returnPrice();
 			System.out.println(value);
-			sendToRESTAPI(paramKey+value,apiLink);
+			//sendToRESTAPI(paramKey+value,apiLink);
 			}
 		
 		// Task 2
 		for(int i = 0; i < vehicleArray.size(); i++){
-			System.out.println(vehicleArray.get(i).returnName() + " - " + vehicleArray.get(i).returnSipp() + " - " + vehicleArray.get(i).returnCarType() + " - " + vehicleArray.get(i).returnDoorsCarType() + " - " + vehicleArray.get(i).returnTransmission() + " - " + vehicleArray.get(i).returnFuelAirCon());
+			System.out.println(vehicleArray.get(i).returnName() + " - " + vehicleArray.get(i).returnSipp() + " - " + vehicleArray.get(i).returnCarType() + " - " + vehicleArray.get(i).returnDoorsCarType() + " - " + vehicleArray.get(i).returnTransmission() + " - " + vehicleArray.get(i).returnFuel() + " - " + vehicleArray.get(i).returnAirCon());
 		}	
 		
 		// Task 3
@@ -76,7 +82,46 @@ public class Task {
 		for(int i = 0; i < vehicleArray.size(); i++){
 			System.out.println(vehicleArray.get(i).returnName() + " - " + vehicleArray.get(i).returnVehicleScore() + " - " + vehicleArray.get(i).returnRating() + " - " + vehicleArray.get(i).returnSumOfScores());
 			}
+	
+		/*
+		for(int i = 0; i < vehicleArray.size(); i++){
+		String request = "vehicle_name=" + vehicleArray.get(i).returnName() +
+				"&vehicle_sipp=" + vehicleArray.get(i).returnSipp() +
+				"&vehicle_price=" + vehicleArray.get(i).returnPrice() +
+				"&vehicle_supplier=" + vehicleArray.get(i).returnSupplier() +
+				"&vehicle_rating=" + vehicleArray.get(i).returnRating() +
+				"&vehicle_type=" + vehicleArray.get(i).returnCarType() +
+				"&vehicle_doors=" + vehicleArray.get(i).returnDoorsCarType() +
+				"&vehicle_trans=" + vehicleArray.get(i).returnTransmission() +
+				"&vehicle_fuel=" + vehicleArray.get(i).returnFuel() +
+				"&vehicle_aircon=" + vehicleArray.get(i).returnAirCon() +
+				"&vehicle_score=" + vehicleArray.get(i).returnVehicleScore() +
+				"&vehicle_sum=" + vehicleArray.get(i).returnSumOfScores();
+
+		sendToRESTAPI(request,apiLink2);
+		}
+		*/
 		
+		System.out.println(vehicleArray.size());
+		
+		
+		String request = "vehicle_name=" + vehicleArray.get(0).returnName() +
+				"&vehicle_sipp=" + vehicleArray.get(0).returnSipp() +
+				"&vehicle_price=" + vehicleArray.get(0).returnPrice() +
+				"&vehicle_supplier=" + vehicleArray.get(0).returnSupplier() +
+				"&vehicle_rating=" + vehicleArray.get(0).returnRating() +
+				"&vehicle_type=" + vehicleArray.get(0).returnCarType() +
+				"&vehicle_doors=" + vehicleArray.get(0).returnDoorsCarType() +
+				"&vehicle_trans=" + vehicleArray.get(0).returnTransmission() +
+				"&vehicle_fuel=" + vehicleArray.get(0).returnFuel() +
+				"&vehicle_aircon=" + vehicleArray.get(0).returnAirCon() +
+				"&vehicle_score=" + vehicleArray.get(0).returnVehicleScore() +
+				"&vehicle_sum=" + vehicleArray.get(0).returnSumOfScores();
+		
+		sendToRESTAPI(request,apiLink2);
+		
+		
+	
 	}
 	
 	private static void sendToRESTAPI(String s, String link){
