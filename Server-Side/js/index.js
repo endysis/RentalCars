@@ -1,3 +1,20 @@
+$(document).ready(function () {
+  $.ajax({
+   url: 'http://localhost/rentalOutput/php/getVehicles.php?num=2&dataname=name-price-sum_of_scores',
+
+   error: function(e) {
+      console.log('error', e)
+   },
+   success: function(data) {
+      $('.tbl-container').html(data);
+   },
+   type: 'GET'
+   }); 
+    $('.tbl-header').hide();
+    $('.tbl-content').hide();
+});   
+
+
 $('.panel').click(function() {
   if(!$(this).hasClass('active')) {
     var index = $(this).index();
@@ -8,15 +25,15 @@ $('.panel').click(function() {
     $(this).addClass('active');
     $('#order').delay(800).slideToggle(400);
     $('.name').hide();
-    $('.tbl-header').hide();
-    $('.tbl-content').hide();
+    $('.tbl-header').show();
+    $('.tbl-content').show();
   }
 });
 
 $('#back').click(function(e) {
   $('.name').show();
-  $('.tbl-content').show();
-  $('.tbl-header').show();
+    $('.tbl-header').hide();
+    $('.tbl-content').hide();
   $('#order').slideToggle(400);
   var self = this;
   setTimeout(function() {
@@ -25,17 +42,3 @@ $('#back').click(function(e) {
   e.preventDefault();
 });
 
-$('#submit').click(function(e) {
-  e.preventDefault();
-});
-
-$('#quantity').on('input change', function() {
-  var qv = $('#quantity').val();
-  if(qv % 1 != 0) {
-    qv = parseInt(qv, 10);
-    if(qv == 0) qv = "";
-    qv += "½";
-  }
-  $('label[for="quantity"]').text(qv);
-  // TODO: update the price as well
-})
