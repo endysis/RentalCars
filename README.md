@@ -96,7 +96,7 @@ http://www.endy.co.uk/vehicles.php?dataname=name-price&orderby=price&order=asc&f
 
 The video below displays the functionality of this project.
 
-[![Rental Cars API Demo](https://www.youtube.com/watch?v=aS_5mNXQ0Xc/0.jpg)](https://www.youtube.com/watch?v=aS_5mNXQ0Xc "Rental Cars API Demo")
+[![Video Demonstration](https://lh3.googleusercontent.com/dNU6TpI4ejW6rjBq6aavKVZH-ym1JSU6tda5HaF6M9ili0kHlJeGp2NwlUuYJWK3RwIy=w300)](https://www.youtube.com/watch?v=aS_5mNXQ0Xc "Video Demonstration")
 
 ## Built With
 
