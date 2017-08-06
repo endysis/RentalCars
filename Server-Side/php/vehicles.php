@@ -3,8 +3,8 @@
 // Databast connection information
 $host = "localhost";
 $user = "root";
-$pwd  = "ripley";
-$db   = "RentalCars";
+$pwd  = "****";
+$db   = "VehiclesRC";
 
 //Connect to the database
 try {
@@ -15,7 +15,7 @@ catch (Exception $e) {
     die(var_dump($e));
 }
 
-if ($_SERVER['REQUEST_METHOD'] == "GET") {
+if ($_SERVER['REQUEST_METHOD'] == "GET") { // If a GET Request
     // Queries
     $format    = isset($_GET['format']) && strtolower($_GET['format']) == 'html' ? "html" : "json";
     $data_name = isset($_GET['dataname']);
@@ -47,7 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
         if ($data_name == "*") {
             $data_name = $allColumns;
         }
-        // Extract data requests from 'data_name' query string and place in an array
+        // Extract data requests from 'data_name' query string and place in an array so they can be output as headers in the html table
         $tableHeaders = array();
         $data_name    = $data_name . ",";
         $stringLength = strlen($data_name);
@@ -76,7 +76,7 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
         <?php
             for ($i = 0; $i < count($tableHeaders); $i++) {
 ?><th><?php
-                echo $tableHeaders[$i];
+                echo $tableHeaders[$i]; // Output Headers
 ?></th><?php
             }
 ?>
@@ -95,7 +95,7 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
           <?php
                 for ($i = 0; $i < count($tableHeaders); $i++) {
 ?><td><?php
-                    echo $vehicle[$tableHeaders[$i]];
+                    echo $vehicle[$tableHeaders[$i]]; // Output Values
 ?></td>
           <?php
                 }
@@ -116,9 +116,9 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
             echo "<h3>No car is currently registered.</h3>";
         }
     }
-} else if ($_SERVER['REQUEST_METHOD'] == "POST" && !empty($_POST)) {
+} else if ($_SERVER['REQUEST_METHOD'] == "POST" && !empty($_POST)) { // If a POST Request
     try {
-        $vehicle_name     = $_POST['vehicle_name'];
+        $vehicle_name     = $_POST['vehicle_name']; // Take request body values and place into variables
         $vehicle_sipp     = $_POST['vehicle_sipp'];
         $vehicle_price    = $_POST['vehicle_price'];
         $vehicle_supplier = $_POST['vehicle_supplier'];
@@ -134,7 +134,7 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
         $sql_insert = "INSERT INTO `Vehicles` (`NAME`, `SIPP`,`PRICE`,`SUPPLIER`,`RATING`,`CAR_TYPE`,`DOORS`,`TRANSMISSION`,`FUEL`,`AIR_CON`,`VEHICLE_SCORE`,`SUM_OF_SCORES`)
                          VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
         
-        $stmt = $conn->prepare($sql_insert);
+        $stmt = $conn->prepare($sql_insert); // Prepare MySQL request
         $stmt->bindValue(1, $vehicle_name);
         $stmt->bindValue(2, $vehicle_sipp);
         $stmt->bindValue(3, $vehicle_price);
@@ -147,13 +147,12 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
         $stmt->bindValue(10, $vehicle_aircon);
         $stmt->bindValue(11, $vehicle_score);
         $stmt->bindValue(12, $vehicle_sum);
-        $stmt->execute();
+        $stmt->execute(); // Send
         
     }
     catch (Exception $e) {
         die(var_dump($e));
     }
-    echo "<h3> Data Sent </h3>";
     
 } else {
     http_response_code(405);

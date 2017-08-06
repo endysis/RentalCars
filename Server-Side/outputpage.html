@@ -1,56 +1,54 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-  <meta charset="UTF-8">
-  <title>Responsive Menu App</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
-  <link rel='stylesheet prefetch' href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,500'>
-  <link rel="stylesheet" href="css/styleTable.css">
-  <link rel="stylesheet" href="css/style.css">
+    <meta charset="UTF-8">
+    <title>RentalCars Output Page</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+    <link rel='stylesheet prefetch' href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,500'>
+    <link rel="stylesheet" href="css/styleTable.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
-  
-<div id="menu">
-  <div class="panel">
-    <h1 class="name">Task 1</h1>
-    <h2 class="type">Vehicles in ascending price order</h2>
-    <div class="tbl-containerT0">  
+
+    <div id="menu">
+        <div class="panel">
+            <h1 class="name">Task 1</h1>
+            <h2 class="type">Vehicles in ascending price order</h2>
+            <div class="tbl-containerT0">
+            </div>
+        </div>
+        <div class="panel">
+            <h1 class="name">Task 2</h1>
+            <h2 class="type">Vehicle specification</h2>
+            <div class="tbl-containerT1">
+            </div>
+        </div>
+        <div class="panel">
+            <h1 class="name">Task 3</h1>
+            <h2 class="type">Highest rated supplier per vehicle type</h2>
+            <div class "tbl-wrapper">
+                <div class="tbl-containerT2">
+                </div>
+            </div>
+        </div>
+        <div class="panel">
+            <h1 class="name">Task 4</h1>
+            <h2 class="type">Vehicle score breakdown</h2>
+            <div class="tbl-containerT3">
+            </div>
+        </div>
+        <form id="order">
+            <select id="choice" name="choice">
+            </select>
+
+            </select>
+            <input id="back" type="reset" value="Back" />
+        </form>
     </div>
-  </div>
-  <div class="panel">
-    <h1 class="name">Task 2</h1>
-    <h2 class="type">Vehicle specification</h2>
-      <div class="tbl-containerT1">
-      </div>
-  </div>
-  <div class="panel">
-    <h1 class="name">Task 3</h1>
-    <h2 class="type">Highest rated supplier per vehicle type</h2>
-    <div class "tbl-wrapper">
-    <div class="tbl-containerT2">
-</div>
-</div>
-  </div>
-  <div class="panel">
-    <h1 class="name">Task 4</h1>
-    <h2 class="type">Vehicle score breakdown</h2>
-    <div class="tbl-containerT3">
-    </div>
-    </div>
-  <form id="order">
-    <select id="choice" name="choice">
-      <option value="leffe">Leffe</option>
-      <option value="paulaner">Paulaner</option>
-      <option value="heineken">Heineken</option>
-      <option value="tuborg">Tuborg</option>
-    </select>
-  
-    </select>
-    <input id="back" type="reset" value="Back"/>
-  </form>
-</div>
-  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+    <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
     <script src="js/index.js"></script>
 </body>
+
 </html>

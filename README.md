@@ -1,4 +1,4 @@
-# Rental Cars Test
+# Rental Cars Project
 
 This repository consists of a Java console application, which solves each set task in "Part 1". For "Part 2" the console application sends its data through a REST API via POST request and outputs the content to a HTML page. A GET request can have various parameters and is available for output in JSON or HTML. Database management is facilitated using MySQL.
 
@@ -100,14 +100,14 @@ The video below displays the functionality of this project.
 
 ## Built With
 
-* [Mars Eclipse](https://eclipse.org/mars/) - The IDE used.
+* [Mars Eclipse](https://eclipse.org/mars/) - IDE used
 * [Xammp](https://www.apachefriends.org/index.html) - Web testing
 * [Paw](https://paw.cloud/) - API testing
 * [JSON-simple](https://code.google.com/archive/p/json-simple/) - JSON Decoding
 
 ## Authors
 
-* **O'Shea Douglas** - *Initial work* - [ENDY](https://github.com/endysis)
+* **O'Shea Douglas** - *Initial work* - [ÉNDY](https://github.com/endysis)
 
 ## Acknowledgments
 

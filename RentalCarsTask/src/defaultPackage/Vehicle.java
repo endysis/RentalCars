@@ -68,7 +68,7 @@ public class Vehicle {
 	}
 	
 	public String returnDoorsCarType(){
-		String value = "";
+		String value = "N/A";
 		
 		if(sipp.charAt(1) == 'B'){
 			value = "2 doors";
@@ -147,6 +147,14 @@ public class Vehicle {
 	public double returnSumOfScores(){
 		return sumOfScores;
 	}
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	public String returnSIPPSpec(){
 		String value = "";
