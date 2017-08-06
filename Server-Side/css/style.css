@@ -23,8 +23,8 @@ body {
   /* without it, there is a weird gap between panels */
   -webkit-transform: translate(-50%, -50%) translateZ(0);
           transform: translate(-50%, -50%) translateZ(0);
-  height: 80vh;
-  width: 53.33333vh;
+  height: 100%;
+  width: 100%;
   border-radius: 2vh;
   overflow: hidden;
   box-shadow: 4vh 7vh 14vh -6vh rgba(0, 0, 0, 0.35), -4vh 7vh 14vh -6vh rgba(0, 0, 0, 0.35);
