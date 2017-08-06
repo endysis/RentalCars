@@ -84,7 +84,7 @@ Below shows the consequence of each parameter
 |num|0 - inf|Specify the number of records to output| 
 |format|json,html|Specify the output format| 
 
-For example view the following GET request...
+For example the following GET request...
 
 ```
 http://www.endy.co.uk/vehicles.php?dataname=name-price&orderby=price&order=asc&format=json
