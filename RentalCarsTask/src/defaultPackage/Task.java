@@ -9,9 +9,11 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Scanner;
+
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -77,15 +79,20 @@ public class Task {
      // Part 1 Task 3	
     case "3":
      System.out.println("TASK 3");
-
-     Collections.sort(vehicleArray, new Comparator < Vehicle > () {
+     ArrayList<String> carTypeList = new ArrayList<String>();
+     Collections.sort(vehicleArray, new Comparator < Vehicle > () { // Sort Array
       @Override public int compare(Vehicle v1, Vehicle v2) {
        return Double.compare(v2.returnRating(), v1.returnRating());
       }
      });
-
-     for (int i = 0; i < vehicleArray.size(); i++) {
-      System.out.println(vehicleArray.get(i).returnName() + " - " + vehicleArray.get(i).returnPrice() + " - " + vehicleArray.get(i).returnSupplier() + " - " + vehicleArray.get(i).returnRating());
+     
+     for(int i = 0; i < vehicleArray.size(); i++){ 
+    	 if(carTypeList.contains(vehicleArray.get(i).returnCarType()) == false){ // Check if the 'CarType is already checked' 
+    		 carTypeList.add(vehicleArray.get(i).returnCarType()); // If not, add to the checked list and print the corresponding car type.
+    		 System.out.println(vehicleArray.get(i).returnName() + " - " + vehicleArray.get(i).returnCarType() + " - " + vehicleArray.get(i).returnSupplier() + " - " + vehicleArray.get(i).returnRating());
+    	 } else {
+    		 continue; // Else continue and avoid printing the Car Type
+    	 }
      }
      break;
 
